@@ -1,7 +1,14 @@
 
 package com.example.demo.model;
-public class AyUser {
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "ay_user")
+public class AyUser {
+    @Id
     private long id;
 
     private String name;
