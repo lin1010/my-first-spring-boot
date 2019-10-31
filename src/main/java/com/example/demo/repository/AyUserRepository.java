@@ -3,6 +3,15 @@ package com.example.demo.repository;
 import com.example.demo.model.AyUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface AyUserRepository extends JpaRepository<AyUser,String> {
+import java.util.Collection;
+import java.util.List;
 
+public interface AyUserRepository extends JpaRepository<AyUser,Long> {
+
+
+    List<AyUser> findByName(String name);
+
+    List<AyUser> findByNameLike(String name);
+
+    List<AyUser> findByIdIn(Collection<Long> ids);
 }
