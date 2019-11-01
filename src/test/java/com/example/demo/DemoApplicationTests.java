@@ -92,6 +92,16 @@ class DemoApplicationTests {
 		ayUserService.delete((long)3);
 	}
 
+	@Test
+	public void testTransaction() {
+		AyUser ayUser = new AyUser();
+		ayUser.setId((long) 7);
+		ayUser.setName("啊2");
+		ayUser.setPassword("123456777");
+		ayUserService.save(ayUser);
+
+	}
+
 
 
 }

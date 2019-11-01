@@ -8,12 +8,14 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.transaction.Transactional;
 import java.util.Collection;
 import java.util.List;
 
+@Transactional
 @Service
 public class AyUserServiceImpl implements AyUserService  {
-    @Resource
+    @Resource(name = "ayUserRepository")
     private AyUserRepository ayUserRepository;
 
     @Override
@@ -26,9 +28,15 @@ public class AyUserServiceImpl implements AyUserService  {
         return ayUserRepository.findAll();
     }
 
+    @Transactional
     @Override
     public AyUser save(AyUser ayUser) {
-        return ayUserRepository.save(ayUser);
+        AyUser saveUser = ayUserRepository.save(ayUser);
+
+//        出现空指针异常
+//        String error = null;
+//        error.split("/");
+        return saveUser;
     }
 
     @Override
